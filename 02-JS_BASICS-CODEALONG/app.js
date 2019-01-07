@@ -25,7 +25,7 @@ val = Math.pow(8, 2);
 val = Math.min(2, 33, 4, 10, 55, 6, 3);
 val = Math.max(2, 33, 4, 10, 55, 6, 3);
 val = Math.random(); // random decimal
-// wrap Math methods 
+// you can wrap Math methods 
 val = Math.floor(Math.random() * 20 + 1);
 
 

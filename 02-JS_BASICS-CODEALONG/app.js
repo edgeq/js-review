@@ -3,7 +3,7 @@
  * 
  * PRIMITIVE vs REFERENCE
  * 
- * PRIMITVE = STACK
+ * PRIMITVE = STORED IN STACK
  * accessed by its actual value in variable
  *  - string
  *  - number (integers, decimals, floats)
@@ -12,7 +12,7 @@
  *  - undefined
  *  - symbols 
  * 
- * REFERENCE = HEAP
+ * REFERENCE = STORED IN HEAP
  * data not stored in variable, but by reference. considered objects
  *  - arrays
  *  - object literals

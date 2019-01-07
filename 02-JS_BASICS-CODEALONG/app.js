@@ -1,40 +1,33 @@
 /** 
- * DATA TYPES - two types of data types
- * 
- * PRIMITIVE vs REFERENCE
- * 
- * PRIMITVE = STORED IN STACK
- * accessed by its actual value in variable
- *  - string
- *  - number (integers, decimals, floats)
- *  - boolean
- *  - null (intentionally empty value)
- *  - undefined
- *  - symbols 
- * 
- * REFERENCE = STORED IN HEAP
- * data not stored in variable, but by reference. considered objects
- *  - arrays
- *  - object literals
- *  - functions
- *  - dates
- * 
- * JS IS A DYNAMICALLY TYPED LANGUAGE
- *  - variables can hold any type of data and be re-assigned to any type of data
- *  - variables do not need to be contricted to a data type.
- * 
+ * Numbers + Math Object
  */
-const typedVar = 'this is a string';
-console.log(typeof typedVar);
 
-const typedVar2 = 3999;
-console.log(typeof typedVar2);
+const num1 = 100;
+const num2 = 50;
+let val;
 
-const typedVar3 = ['234', 345, [1, 2, 3]];
-console.log(typeof typedVar3);
+//SIMPLE MATH w/ NUMBERS
+val = num1 + num2;
+val = num1 * num2;
+val = num1 - num2;
+val = num1 / num2;
+val = num1 % num2; // useful for getting truthy values based on divisibility
 
-const typedVar4 = {
-    type: 'object',
-    literal: true
-}
-console.log(typeof typedVar4);
+//Math Object
+val = Math.PI;
+val = Math.E;
+val = Math.round(2.4); //round based on decimal
+val = Math.ceil(2.4); //round up
+val = Math.floor(2.99); //round down
+val = Math.sqrt(64); //square root
+val = Math.abs(-3); //asbolute value
+val = Math.pow(8, 2);
+val = Math.min(2, 33, 4, 10, 55, 6, 3);
+val = Math.max(2, 33, 4, 10, 55, 6, 3);
+val = Math.random(); // random decimal
+// wrap Math methods 
+val = Math.floor(Math.random() * 20 + 1);
+
+
+
+console.log(val);

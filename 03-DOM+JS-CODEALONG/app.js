@@ -1,61 +1,24 @@
 /**
- * Traversing the DOM - parents and children
+ * CREATING ELEMENTS IN DOM
  */
 
- let val;
- const list = document.querySelector('ul.collection');
- const listItem = document.querySelector('li.collection-item:first-child');
+ // CREATE ELEMENT
 
-// console.log(list);
-// console.log(listItem);
+ const li = document.createElement('li'); //ok to use const because we're modifying the data type but not redeclarin or changing the core type
+ 
+ li.className = 'collection-item'; // add class
+ li.id = 'new-item'; // add id
+ li.setAttribute('title', 'New Item'); // add a title
+ li.appendChild(document.createTextNode('Listicle 02')); // add text inside the <li>
 
-// Get child node
-val = list.childNodes; // returns nodeList
-val = list.childNodes[1];
-val = list.childNodes[1].nodeName;
-val = list.childNodes[1].nodeType;
-/**
- * NODE TYPES
- *  1 - Element
- *  2 - Attribute (deprecated)
- *  3 - Text node
- *  8 - Comment
- *  10 - Doctype
- */
+// Append li as child to ul
+document.querySelector('ul.collection').appendChild(li);
 
-val = list.children; //more targeted. returns HTMLcollection
-val = list.children[4];
-val = list.children[0].textContent = 'hello';
+//Create new link element
+const link = document.createElement('a'); 
+link.className = 'delete-item secondary-content'; // add class
+link.innerHTML = '<i class="fa fa-remove"></i>'; // add icon inside 
+li.appendChild(link); // append the link and icon to the li 
 
-// you can be really specific and add ids and classes.
-list.children[3].children[0].id = 'test-id';
-list.children[3].children[0].classList.add('test-class');
-
-val = list.children[3].children[0];
-
-val = list.firstChild; //returns first line break as text
-val = list.lastChild; //returns first line break as text
-val = list.firstElementChild;
-val = list.lastElementChild;
-
-// Count Child elements
-val = list.childElementCount;
-
-//PARENTS
-val = listItem.parentNode;
-val = listItem.parentElement;
-val = listItem.parentElement.parentElement;
-
-//SIBLINGS
-    // next sibling
-val = listItem.nextSibling; // returns first line break as text
-listItem.nextElementSibling.textContent = 'traversed!'
-val = listItem.nextElementSibling.nextElementSibling; //third
-
-    // prev sibling
-val = listItem.previousElementSibling;
-val = listItem.previousSibling;
-
-val = listItem.previousElementSibling; // null - there is no previous element to the first 
-
- console.log(val);
+ console.log(li);
+ 

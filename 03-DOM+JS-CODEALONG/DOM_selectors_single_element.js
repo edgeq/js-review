@@ -1,11 +1,11 @@
 /**
  * DOM SELECTORS
- * 
+ *
  * Single Element Selectors: grabs 1st item it finds with specified attribute
  * Yields nodeList or HTMLCollection
  *   -document.getElementById()
  *   -document.querySelector()
- * 
+ *
  * Multiple Element Selectos: grabs all items with the specified class
  */
 

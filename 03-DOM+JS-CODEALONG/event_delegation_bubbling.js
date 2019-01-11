@@ -28,7 +28,8 @@ document.querySelector('.col').addEventListener('click', function () {
 // delItem.addEventListener('click', deleteItem);
 
 // EVENT DELEGATION - listening on parent and traversing down. More reliable
-document.body.addEventListener('click', deleteItem);
+const collectionList = document.querySelector('.collection');
+collectionList.addEventListener('click', deleteItem);
 
 function deleteItem(e){
   // console.log('deleted item');

@@ -1,67 +1,41 @@
 /**
- * REPLACING + REMOVING DOM ELEMENTS
- *  - document.createElement('')
- *  - document.createTectNode('')
- *  - document.replaceChild(newThing, oldThing)
- *  - document.remove();
- *  - document.removeChild(targetChild)
- * 
- *  - classList.add('')
- *  - classList.remove('')
- *  - getAttribute('')
- *  - setAttribute('attrName', 'attrVal')
- *  - hasAttribute('')
- *  - removeAttribute('');
+ * EVENT LISTENERS - 'we can listen for events on any element in the DOM'
  */
 
-// REPLACE ELEMENT
-// create the element
-const newHeading = document.createElement('h2');
-// add a title
-newHeading.id = 'task-title';
-// appeend text inside element
-newHeading.appendChild(document.createTextNode('Task List 02'));
+// EVENT LISTENER ON THE CLEAR TASKS BUTTON
+// document.querySelector('.clear-tasks').addEventListener('click', function(e){
+//     e.preventDefault();
+//     console.log('clicked');
+// })
 
-// get old heading
-const oldHeading = document.getElementById('task-title');
-// target old heading's parent element
-const cardAction = oldHeading.parentElement;
-// replace 
-cardAction.replaceChild(newHeading, oldHeading); //1st arg = what you want to insert, 2ndarg - what to replace
+document.querySelector('.clear-tasks').addEventListener('click', onClick);
 
-// REMOVE ELEMENT
-const li = document.querySelectorAll('li');
-const list = document.querySelector('ul');
+function onClick(e) {
+    e.preventDefault();
+    // console.log('click calls onClick');
+    let val;
+    val = e; // returns event object - all event affordances here
+    // val = e.target; // represents the element that the event happens on.
+    // e.target.style.background = 'tomato';
+    val = e.target.style;
+    val = e.target.classList;
+    val = e.target.innerText = 'CLICKED';
+    val = e.target.classList.remove('black');
+    val = e.target.style.backgroundColor = 'aquamarine';
+    val = e.target.style.color = 'grey';
 
-//REMOVE LIST ITEM
-li[0].textContent = 'hello';
-li[0].remove(); //removed specific <li>
+    // EVENT TYPE
+    val = e.type;
 
-li[4].textContent = 'remove me';
-list.removeChild(li[4]); //removed child of <ul>
+    // TIMESTAMP
+    val = e.timeStamp;
 
-// CLASSES 
-const firstLi = document.querySelector('li:first-child');
-const link = firstLi.children[0];
+    // Window coordinates
+    val = e.clientY;
+    val = e.clientX;
 
-let val;
-
-val = link.className;
-val = link.classList;
-val = link.classList[1];
-
-link.classList.add('test');
-link.classList.remove('test');
-
-val = link;
-
-// ATTRIBUTES
-val = link.getAttribute('href');
-val = link.setAttribute('href', 'http://google.com');
-val = link.getAttribute('href');
-val = link.hasAttribute('title');
-link.setAttribute('title', 'google');
-val = link;
-
-link.removeAttribute('title');
-console.log(val);
+    // Element coordinates
+    val = e.offsetY;
+    val = e.offsetX;
+    console.log(val);
+}

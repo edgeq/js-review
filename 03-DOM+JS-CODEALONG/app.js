@@ -1,24 +1,23 @@
 /**
- * CREATING ELEMENTS IN DOM
+ * REPLACING + REMOVING DOM ELEMENTS
  */
 
- // CREATE ELEMENT
-
- const li = document.createElement('li'); //ok to use const because we're modifying the data type but not redeclarin or changing the core type
+ // REPLACE ELEMENT
+ // create the element
+ const newHeading = document.createElement('h2'); 
+ // add a title
+ newHeading.id = 'task-title'; 
+ // appeend text inside element
+ newHeading.appendChild(document.createTextNode('Task List 02')); 
  
- li.className = 'collection-item'; // add class
- li.id = 'new-item'; // add id
- li.setAttribute('title', 'New Item'); // add a title
- li.appendChild(document.createTextNode('Listicle 02')); // add text inside the <li>
+ // get old heading
+ const oldHeading = document.getElementById('task-title');
+ // target old heading's parent element
+ const cardAction = oldHeading.parentElement;
+ // replace 
+ cardAction.replaceChild(newHeading, oldHeading); //1st arg = what you want to insert, 2ndarg - what to replace
 
-// Append li as child to ul
-document.querySelector('ul.collection').appendChild(li);
+console.log(cardAction);
+ 
 
-//Create new link element
-const link = document.createElement('a'); 
-link.className = 'delete-item secondary-content'; // add class
-link.innerHTML = '<i class="fa fa-remove"></i>'; // add icon inside 
-li.appendChild(link); // append the link and icon to the li 
-
- console.log(li);
  

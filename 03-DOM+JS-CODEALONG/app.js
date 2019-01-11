@@ -1,41 +1,34 @@
 /**
- * EVENT LISTENERS - 'we can listen for events on any element in the DOM'
+ *  MOUSE EVENTS 
  */
 
-// EVENT LISTENER ON THE CLEAR TASKS BUTTON
-// document.querySelector('.clear-tasks').addEventListener('click', function(e){
-//     e.preventDefault();
-//     console.log('clicked');
-// })
+const clearBtn = document.querySelector('.clear-tasks');
+const card = document.querySelector('.card');
+const heading = document.querySelector('h5');
 
-document.querySelector('.clear-tasks').addEventListener('click', onClick);
+//CLICK
+clearBtn.addEventListener('click', runEvent);
+// DOUBLE CLICK
+clearBtn.addEventListener('dblclick', runEvent);
+// MOUSE DOWN
+clearBtn.addEventListener('mousedown', runEvent);
+//MOUSE UP
+clearBtn.addEventListener('mouseup', runEvent);
+//MOUSE ENTER
+card.addEventListener('mouseenter', runEvent);
+//MOUSE LEAVE
+card.addEventListener('mouseleave', runEvent);
+//MOUSE OVER - for nested elements
+card.addEventListener('mouseover', runEvent);
+//MOUSE OUT - for nested elements
+card.addEventListener('mouseout', runEvent);
+// MOUSE MOVE
+card.addEventListener('mousemove', runEvent);
 
-function onClick(e) {
+// EVENT HANDLER 
+function runEvent(e) {
     e.preventDefault();
-    // console.log('click calls onClick');
-    let val;
-    val = e; // returns event object - all event affordances here
-    // val = e.target; // represents the element that the event happens on.
-    // e.target.style.background = 'tomato';
-    val = e.target.style;
-    val = e.target.classList;
-    val = e.target.innerText = 'CLICKED';
-    val = e.target.classList.remove('black');
-    val = e.target.style.backgroundColor = 'aquamarine';
-    val = e.target.style.color = 'grey';
-
-    // EVENT TYPE
-    val = e.type;
-
-    // TIMESTAMP
-    val = e.timeStamp;
-
-    // Window coordinates
-    val = e.clientY;
-    val = e.clientX;
-
-    // Element coordinates
-    val = e.offsetY;
-    val = e.offsetX;
-    console.log(val);
+    console.log(`Event Type: ${e.type}`);
+    heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
+    document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
 }

@@ -1,39 +1,45 @@
 /**
- *  KEYBOARD INPUTS + EVENTS 
+ *  EVENT BUBBLING AND DELEGATION - 
+ *  - BUBBLING: When an event happens, it bubbles up through its parent.
+ *  - DELEGATION: listen on a parent element and target children to do something. Used when elements are similar
+ *  
  */
 
- const form = document.querySelector('form#task-form');
- const taskInput = document.getElementById('task');
- const heading = document.querySelector('h5');
- const select = document.querySelector('select');
+ // EVENT BUBBLING
+ /* Clicking on .card-title also triggers it's parent containers...
+  
+document.querySelector('.card-title').addEventListener('click', function () {
+  console.log('card title');
+});
+document.querySelector('.card-content').addEventListener('click', function () {
+  console.log('card content');
+});
+document.querySelector('.card').addEventListener('click', function () {
+  console.log('card');
+});
 
- form.addEventListener('submit', runEvent);
+document.querySelector('.col').addEventListener('click', function () {
+  console.log('col');
+});
+*/
 
-//  function runEvent(e){
-//      e.preventDefault();
-//      console.log(`Event Type: ${e.type}`);
-//      console.log(taskInput.value);
-//      taskInput.value = '';
-//  }
+// this won't work because we need to delegate events
+// const delItem = document.querySelector('.delete-item');
+// delItem.addEventListener('click', deleteItem);
 
-//KEY EVENTS
-// taskInput.addEventListener('keydown', runEvent) // 
-// taskInput.addEventListener('keypress', runEvent) // 
-// taskInput.addEventListener('keyup', runEvent) // use keyup for responsive typing
-// taskInput.addEventListener('focus', runEvent) // 
-// taskInput.addEventListener('blur', runEvent) //      
-// taskInput.addEventListener('cut', runEvent) //      
-// taskInput.addEventListener('paste', runEvent) //      
-// taskInput.addEventListener('copy', runEvent) //      
-// taskInput.addEventListener('input', runEvent) // anything in the event listening element
- select.addEventListener('change', runEvent) // comment materialize cdn in index.html for this to work
+// EVENT DELEGATION - listening on parent and traversing down
+document.body.addEventListener('click', deleteItem);
 
+function deleteItem(e){
+  // console.log('deleted item');
+  // console.log(e.target);
+  // if (e.target.parentElement.className === 'delete-item secondary-content' ){
+  //   console.log('delete item')
+  // }
+  if (e.target.parentElement.classList.contains('delete-item')) {
+    console.log('delete item');
+    //target parent of e.target.parentElement and remove
+    e.target.parentElement.parentElement.remove();
+  }
+}
 
- function runEvent(e) {
-     console.log(`Event Type: ${e.type}`);
-    // Keyup Actions
-      console.log(e.target.value);
-    //  heading.innerText = e.target.value;
-
- }
- 

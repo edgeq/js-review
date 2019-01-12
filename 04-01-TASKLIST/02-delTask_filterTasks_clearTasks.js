@@ -9,8 +9,6 @@ const task = document.querySelector('#task');
 loadEventListeners();
 
 function loadEventListeners() {
-    // DOM load event
-    document.addEventListener('DOMContentLoaded', getTasks);
     // Add task 
     form.addEventListener('submit', addTask);
     // delete item - multiple of the same and dynamic elements need delegation
@@ -20,42 +18,6 @@ function loadEventListeners() {
     // filter for tasks
     filter.addEventListener('keyup', filterTasks);
 
-}
-
-// load tasks from Local Storage
-function getTasks() {
-    let taskArr;
-    if (localStorage.getItem('tasks') === null) {
-        taskArr = [];
-    } else {
-        taskArr = JSON.parse(localStorage.getItem('tasks'));
-    }
-
-    taskArr.forEach(function(task) {
-        //create element, classname, and task value
-        const li = document.createElement('li');
-        li.className = 'collection-item';
-        li.appendChild(document.createTextNode(task));
-
-        //create a link with materialize classNames
-        const link = document.createElement('a');
-        link.className = 'delete-item secondary-content'
-            // add icon to link
-        const icon = document.createElement('i');
-        icon.className = 'fa fa-trash';
-        link.appendChild(icon);
-        /**
-         * Traversy method
-         *  link.innerHTML = '<i class="fa fa-remove></i>" 
-         */
-
-        // append link to li
-        li.appendChild(link);
-
-        // append li to ul
-        taskList.appendChild(li);
-
-    })
 }
 
 // addTask Function
@@ -88,25 +50,10 @@ function addTask(e) {
     // append li to ul
     taskList.appendChild(li);
 
-    // Store in Local Storage
-    persistTask(task.value);
     //clear the input
     task.value = '';
 
     console.log(li);
-}
-
-// Task Persist Function 
-function persistTask(taskVal) {
-    let taskArr;
-
-    if (localStorage.getItem('tasks') === null) {
-        taskArr = [];
-    } else {
-        taskArr = JSON.parse(localStorage.getItem('tasks'));
-    }
-    taskArr.push(taskVal);
-    localStorage.setItem('tasks', JSON.stringify(taskArr));
 }
 
 //removeTask Function
@@ -117,34 +64,8 @@ function removeTask(e) {
 
             liAction.parentElement.remove();
 
-            //remove from LS
-            removeLocal(liAction.parentElement)
-
         }
     }
-}
-
-// REMOVE LOCAL STORAGE
-function removeLocal(taskItem) {
-    console.log(taskItem);
-    //check local storage and set taskArr accordingly
-    let taskArr;
-    if (localStorage.getItem('tasks') === null) {
-        taskArr = [];
-    } else {
-        taskArr = JSON.parse(localStorage.getItem('tasks'));
-    }
-    //loop through each item in taskArr, include the index, 
-    taskArr.forEach(function(task, index) {
-        //if taskItem.textContent matches passed in argument
-        if (taskItem.textContent === task) {
-            // target index, delete
-            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice#Parameters
-            taskArr.splice(index, 1);
-        }
-    });
-
-    localStorage.setItem('tasks', JSON.stringify(taskArr));
 }
 
 //clearTasks function
@@ -155,17 +76,6 @@ function clearTasks() {
         }
 
     }
-    // Clear tasks from local storage
-    clearTasksFromStorage();
-}
-
-// Clear Tasks from storage
-function clearTasksFromStorage() {
-    localStorage.removeItem('tasks');
-    /**
-     * Traversy method: 
-     *  localStorage.clear();
-     */
 }
 
 // filter function

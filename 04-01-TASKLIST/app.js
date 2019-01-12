@@ -39,8 +39,8 @@ function getTasks() {
 
         //create a link with materialize classNames
         const link = document.createElement('a');
-        link.className = 'delete-item secondary-content'
-            // add icon to link
+        link.className = 'delete-item secondary-content';
+        // add icon to link
         const icon = document.createElement('i');
         icon.className = 'fa fa-trash';
         link.appendChild(icon);
@@ -55,7 +55,7 @@ function getTasks() {
         // append li to ul
         taskList.appendChild(li);
 
-    })
+    });
 }
 
 // addTask Function
@@ -72,8 +72,8 @@ function addTask(e) {
 
     //create a link with materialize classNames
     const link = document.createElement('a');
-    link.className = 'delete-item secondary-content'
-        // add icon to link
+    link.className = 'delete-item secondary-content';
+    // add icon to link
     const icon = document.createElement('i');
     icon.className = 'fa fa-trash';
     link.appendChild(icon);
@@ -118,7 +118,7 @@ function removeTask(e) {
             liAction.parentElement.remove();
 
             //remove from LS
-            removeLocal(liAction.parentElement)
+            removeLocal(liAction.parentElement);
 
         }
     }
@@ -185,6 +185,6 @@ function filterTasks(e) {
             //otherwise hide the element
             taskItem.style.display = 'none';
         }
-    })
+    });
 
 }

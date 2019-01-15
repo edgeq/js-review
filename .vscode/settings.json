@@ -1,3 +1,6 @@
 {
-    "terminal.integrated.cursorStyle": "line"
+    "terminal.integrated.cursorStyle": "line",
+    "jshint.options": {
+        "esversion": 6
+    }
 }

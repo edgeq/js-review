@@ -10,12 +10,12 @@ loadEventListeners();
 
 function loadEventListeners() {
     // DOM load event
-    document.addEventListener('DOMContentLoaded', getTasks);
-    // Add task 
+    document.addEventListener('DOMContentLoaded', getTasks)
+    // Add task
     form.addEventListener('submit', addTask);
     // delete item - multiple of the same and dynamic elements need delegation
     taskList.addEventListener('click', removeTask);
-    // clear all tasks 
+    // clear all tasks
     clearBtn.addEventListener('click', clearTasks);
     // filter for tasks
     filter.addEventListener('keyup', filterTasks);
@@ -46,7 +46,7 @@ function getTasks() {
         link.appendChild(icon);
         /**
          * Traversy method
-         *  link.innerHTML = '<i class="fa fa-remove></i>" 
+         *  link.innerHTML = '<i class="fa fa-remove></i>"
          */
 
         // append link to li
@@ -79,7 +79,7 @@ function addTask(e) {
     link.appendChild(icon);
     /**
      * Traversy method
-     *  link.innerHTML = '<i class="fa fa-remove></i>" 
+     *  link.innerHTML = '<i class="fa fa-remove></i>"
      */
 
     // append link to li
@@ -96,7 +96,7 @@ function addTask(e) {
     console.log(li);
 }
 
-// Task Persist Function 
+// Task Persist Function
 function persistTask(taskVal) {
     let taskArr;
 
@@ -134,7 +134,7 @@ function removeLocal(taskItem) {
     } else {
         taskArr = JSON.parse(localStorage.getItem('tasks'));
     }
-    //loop through each item in taskArr, include the index, 
+    //loop through each item in taskArr, include the index,
     taskArr.forEach(function(task, index) {
         //if taskItem.textContent matches passed in argument
         if (taskItem.textContent === task) {
@@ -163,7 +163,7 @@ function clearTasks() {
 function clearTasksFromStorage() {
     localStorage.removeItem('tasks');
     /**
-     * Traversy method: 
+     * Traversy method:
      *  localStorage.clear();
      */
 }

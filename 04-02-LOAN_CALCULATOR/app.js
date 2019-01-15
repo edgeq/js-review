@@ -1,6 +1,8 @@
 // UI VARIABLES
 // const submit = document.querySelector('.btn');
-const formSubmit = document.getElementById('loan-form')
+const formSubmit = document.getElementById('loan-form');
+const loader = document.getElementById('loading');
+const results = document.getElementById('results');
 
 // EVENT LISTENERS
 // submit.addEventListener('click', function(e) {
@@ -8,7 +10,18 @@ const formSubmit = document.getElementById('loan-form')
 //     console.log(e.type);
 // })
 
-formSubmit.addEventListener('submit', calcResults);
+formSubmit.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    //Show LOADER
+    loader.style.display = 'block';
+    //Hide results
+    results.style.display = 'none';
+
+    setTimeout(function() {
+      calcResults(e);
+    }, 1000);
+});
 
 // LOGIC
 function calcResults(e) {
@@ -39,6 +52,11 @@ function calcResults(e) {
       monthlyPayment.value = monthly.toFixed(2);
       totalPayment.value = (monthly * calculatedPayments).toFixed(2);
       totalInterest.value = ((monthly * calculatedPayments) - principal).toFixed(2);
+      //SHOW RESULTS
+      results.style.display = 'block';
+      //HIDE LOADER
+      loader.style.display = 'none';
+
     } else {
       showError('Please Check your numbers');
     }
@@ -49,6 +67,10 @@ function calcResults(e) {
 
 //showError
 function showError(error) {
+  // HIDE RESULTS + HIDE LOADER
+  results.style.display = 'none';
+  loader.style.display = 'none';
+
   const errorDiv = document.createElement('div');
   const card = document.querySelector('.card');
   const heading = document.querySelector('.heading');
@@ -57,11 +79,8 @@ function showError(error) {
   //Create text node and append to div
   errorDiv.appendChild(document.createTextNode(error));
   card.insertBefore(errorDiv, heading);
-
   //Clear Error after 3sec
-  if (document.querySelector('.alert')) {
-    setTimeout(clearError, 3000);
-  }
+  setTimeout(clearError, 2000);
 }
 
 

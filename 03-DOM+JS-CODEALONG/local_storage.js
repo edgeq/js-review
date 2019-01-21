@@ -56,7 +56,7 @@ form.addEventListener('submit', function(e) {
     // reset localStorage tasks
     // pass in array converted to string
     localStorage.setItem('tasks', JSON.stringify(tasks));
-})
+});
 
 const tasks = JSON.parse(localStorage.getItem('tasks'));
 

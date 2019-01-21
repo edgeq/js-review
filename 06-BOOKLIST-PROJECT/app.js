@@ -17,15 +17,41 @@ UI.prototype.addBookToList = function(book) {
           <td>${book.author}</td>
           <td>${book.isbn}</td>
           <td><a href="#" class="delete">X</a></td>
-        `
+        `;
     list.appendChild(row);
-}
-UI.prototype.clearFields = function() {
-        document.getElementById('title').value = '';
-        document.getElementById('author').value = '';
-        document.getElementById('isbn').value = '';
+};
+UI.prototype.showAlert = function(msg, err) {
+    const container = document.querySelector('.container');
+    //create the element
+    const alert = document.createElement('div');
+    const form = document.getElementById('book-form');
+    // add class to element
+    alert.className = `alert ${err}`;
+    // set the element to display msg
+    alert.appendChild(document.createTextNode(msg));
+
+    container.insertBefore(alert, form);
+
+    // TIMOUT
+    setTimeout(function() {
+        document.querySelector('.alert').remove();
+    }, 2000);
+
+
+};
+UI.prototype.deleteBook = function(target) {
+    if (target.className === 'delete') {
+        // Delegate to parent since their are multiple X targets
+        target.parentElement.parentElement.remove();
+        this.showAlert('Book removed', 'success');
     }
-    //Event Listeners
+};
+UI.prototype.clearFields = function() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('isbn').value = '';
+};
+//Event Listeners
 const submit = document.getElementById('book-form');
 
 submit.addEventListener('submit', function(e) {
@@ -38,10 +64,27 @@ submit.addEventListener('submit', function(e) {
     const book = new Book(title, author, isbn);
     // Instantiate UI object
     const ui = new UI();
-    // Add book to list
-    ui.addBookToList(book);
-    //clear fields
-    ui.clearFields();
+    // VALIDATE
+    if (title === '' || author === '' || isbn === '') {
+        //ERROR ALERT
+        ui.showAlert('Please fill in all fields', 'error');
+    } else {
+        // Add book to list
+        ui.addBookToList(book);
+        ui.showAlert('Book Added', 'success');
+        //clear fields
+        ui.clearFields();
+    }
+});
+
+// event listener for delete
+const tbody = document.getElementById('book-list');
+tbody.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const ui = new UI();
+    ui.deleteBook(e.target);
+    //show alert
 
 
-})
+});

@@ -9,19 +9,43 @@
     <title>AJAX SANDBOX - CN Jokes</title>
 </head>
 
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 30rem 4fr;
+        position: relative;
+    }
+    
+    h2 {
+        text-align: center;
+        color: #fcfcfc;
+        background: #4a4a4a;
+        margin-bottom: 5rem;
+        border-radius: .5em;
+        padding: .25em;
+    }
+    
+    form {
+        position: sticky;
+        top: 100px;
+    }
+</style>
+
 <body>
+    <h2>Chuck Norris Joke Generator</h2>
     <div class="container">
-        <h2>Chuck Norris Joke Generator</h2>
-        <form>
-            <div>
-                <label for="number">How many Chuck jokes?</label>
-                <input type="number" id="number" min="1" required>
-            </div>
-            <div>
-                <button class="get-jokes">Get Jokes</button>
-            </div>
-        </form>
-        <aside class="jokes"></aside>
+        <div class="form">
+            <form>
+                <div>
+                    <label for="number">How many Chuck jokes?</label>
+                    <input type="number" id="number" min="1" required>
+                </div>
+                <div>
+                    <button class="get-jokes">Get Jokes</button>
+                </div>
+            </form>
+        </div>
+        <div class="jokes"></div>
     </div>
     <script src="app.js"></script>
 </body>

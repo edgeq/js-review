@@ -4,7 +4,7 @@ class UI {
         this.desc = document.getElementById('w-desc');
         this.string = document.getElementById('w-string');
         this.icon = document.getElementById('w-icon');
-        this.details = document.getElementById('w-details')
+        this.details = document.getElementById('w-details');
         this.humidity = document.getElementById('w-humidity');
         this.windDirection = document.getElementById('w-wind-direction');
         this.minMax = document.getElementById('w-min-max');
@@ -22,7 +22,7 @@ class UI {
 
         this.string.innerHTML = weather.weather[0].description;
 
-        this.icon.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`)
+        this.icon.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
 
         this.humidity.innerHTML = `Relative Humidity: ${weather.main.humidity}&percnt;`;
 

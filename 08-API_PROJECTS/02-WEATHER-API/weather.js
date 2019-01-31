@@ -12,7 +12,7 @@ class Weather {
 
         const weather = await weatherResponse.json();
 
-        return weather
+        return weather;
 
     }
 

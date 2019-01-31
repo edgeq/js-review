@@ -15,12 +15,10 @@ class UI {
     paintUi(weather) {
         this.location.textContent = weather.name;
         let temp = weather.main.temp;
-
-
-        this.desc.innerHTML = temp.toFixed(2) + '&deg; F';
+        this.string.innerHTML = temp.toFixed(2) + '&deg; F';
         console.log(weather.weather);
 
-        this.string.innerHTML = weather.weather[0].description;
+        this.desc.innerHTML = weather.weather[0].description;
 
         this.icon.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
 

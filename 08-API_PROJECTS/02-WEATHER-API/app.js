@@ -1,3 +1,6 @@
+/**
+ * TODO: add location through browser geolocation
+ */
 //Init storage
 const storage = new Storage();
 //get stored location data

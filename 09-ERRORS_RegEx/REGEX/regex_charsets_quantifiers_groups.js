@@ -31,25 +31,10 @@ re = /([0-9]x){3}/i; // number and the letter x, 3 times in succession.
 re = /([0-9][A-Za-z]){3}/i; // any number and any letter, 3 times in succession.
 re = /^([0-9][A-Za-z]){3}$/i; // start and end with any number and any letter, 3 times in succession.
 
-// SHORTHAND CHARACTER CLASSES
-re = /\w/ // any letter, number, or _
-re = /\w+/ // one or more letter, number, or _
-re = /\W/ // non-word characters... anything but letter, number, or _
-re = /\d/ // any digit
-re = /\d+/ // match all digits
-re = /\D/ // match any non digit
-re = /\D+/ // match all non digit
-re = /\s/ // match a space
-re = /\S/ // match any non-space
-re = /hell\b/i // word boundary - match the word at its value
-
-// ASSERTIONS
-re = /q(?=u)/; //match q only if followed by u
-re = /q(?!u)/; //match q only if not followed by u
 
 //Literal Characters
 //String to match
-const str = 'qarth';
+const str = '3a2b1c';
 
 //Log Results
 const result = re.exec(str);

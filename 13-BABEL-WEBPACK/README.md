@@ -28,6 +28,16 @@ Compile and build
 ```sh
 $ npm run build
 ```
+* The build file is all JS files + modules compiled into ONE singular minified JS file `app.bundle.js`
+*
+
+### To Deploy Client-Side Project:
+
+* Upload
+  * Index
+  * Build
+  * Assets
+
 
 ## More Info
 
